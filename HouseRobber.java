@@ -43,3 +43,23 @@ class Solution {
         
     }
 }
+
+//Recursion House robber II
+class Solution {
+    public int memo(int[] nums, int idx,int last, int prev){
+        if(idx==last) return 0;
+        
+        int val1=(prev==0)?nums[idx]+memo(nums, idx+1,last, 1):0;
+        int val2=memo(nums, idx+1,last, 0);
+        
+        
+        return Math.max(val1,val2);
+    }
+    
+    public int rob(int[] nums) {
+       int x=memo(nums, 0, nums.length-1,0);
+       int y=memo(nums, 1, nums.length, 0);
+        return Math.max(x,y);
+        
+    }
+}
